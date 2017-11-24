@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDNet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Topmost="True"
+        ShowInTaskbar="False"
+        IsEnabled="True">
     <Grid>
         
     </Grid>
 </Window>
+    
