@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,26 +11,39 @@ namespace XDNet
 {
     public class EmojiLoader
     {
+        public static Random Rand = new Random();
+
+        public event EventHandler<string> FileNotFound;
+
         string[] EmojiStrings { get; set; }
 
+        public EmojiLoader()
+        {
+
+        }
+
         public EmojiLoader(string filename)
+        {
+            Load(filename);
+        }
+
+        public void Load(string filename)
         {
             try
             {
                 EmojiStrings = File.ReadAllLines(filename);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Can't find emoji file {filename}! Using default emojis instead!", "XDNet - File error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Debug.WriteLine(ex);
+                FileNotFound?.Invoke(this, filename);
                 EmojiStrings = DefaultEmojis;
             }
         }
 
-        static Random rng = new Random();
-
         public string GetRandomEmoji()
         {
-            return EmojiStrings == null ? "" : EmojiStrings[rng.Next(0, EmojiStrings.Length - 1)];
+            return EmojiStrings == null ? "" : EmojiStrings[Rand.Next(0, EmojiStrings.Length - 1)];
         }
 
         public static readonly string[] DefaultEmojis = new string[] 
