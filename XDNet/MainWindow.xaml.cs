@@ -116,9 +116,11 @@ namespace XDNet
 
         void OnHotKeyHandler(HotKey hotKey)
         {
+            Show();
             string emoji = emojiLoader.GetRandomEmoji();
             Dispatcher.Invoke(new Action(() => notifier.ShowInformation(emoji + " Copied to clipboard!")));
 
+            Hide();
             Clipboard.SetText(emoji);
         }
     }

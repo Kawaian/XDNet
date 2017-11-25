@@ -11,7 +11,8 @@
         WindowStyle="None"
         Topmost="True"
         ShowInTaskbar="False"
-        IsEnabled="True">
+        IsEnabled="False"
+        Visibility="Hidden">
     <Grid>
         
     </Grid>
