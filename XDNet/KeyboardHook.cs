@@ -37,7 +37,6 @@ namespace XDNet
                 keybd_event(asciiCode, 0, KeyDown);
                 keybd_event(asciiCode, 0, KeyUp);
             }
-
         }
 
         [DllImport("user32.dll")]
